@@ -1,6 +1,5 @@
 import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.naive_bayes import MultinomialNB
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from nltk.tokenize.casual import TweetTokenizer
@@ -16,9 +15,7 @@ vectorizer = CountVectorizer(lowercase=True, tokenizer=tweet_tokenizer.tokenize,
 vectorizer.fit(X_train)
 X_train_vectorized = vectorizer.transform(X_train)
 
-classifier = LogisticRegression(penalty='l2', dual=False, tol=0.0001, C=1.0, fit_intercept=True, intercept_scaling=1,
-                                class_weight=None, random_state=None, solver='lbfgs', max_iter=1000, multi_class='auto',
-                                verbose=0, warm_start=False, n_jobs=None, l1_ratio=None)
+classifier = LogisticRegression(solver='lbfgs', max_iter=400, multi_class='auto')
 classifier.fit(X_train_vectorized, y_train)
 X_test_vectorized = vectorizer.transform(X_test)
 score = classifier.score(X_test_vectorized, y_test)
