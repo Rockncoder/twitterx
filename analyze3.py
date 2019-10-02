@@ -12,7 +12,7 @@ sentiments = data['sentiment'].values.astype(str)
 
 X_train, X_test, y_train, y_test = train_test_split(tweets, sentiments, test_size=0.2, shuffle=True)
 
-vectorizer = CountVectorizer(lowercase=True, tokenizer=tweet_tokenizer.tokenize)
+vectorizer = CountVectorizer(lowercase=True, tokenizer=tweet_tokenizer.tokenize, ngram_range=(1,3))
 vectorizer.fit(X_train)
 X_train_vectorized = vectorizer.transform(X_train)
 
