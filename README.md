@@ -8,3 +8,8 @@ https://www.manning.com/books/natural-language-processing-for-hackers
  * http://www.nltk.org/
  * https://scikit-learn.org/stable/
  
+ 
+ 
+from the root directory:
+
+pip install -r requirements.txt
